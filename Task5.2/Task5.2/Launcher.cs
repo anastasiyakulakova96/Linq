@@ -17,9 +17,14 @@ namespace Task5._2
         {
             Launcher launcher = new Launcher();
             Calculator calc = new Calculator();
-            calc.ResultEasyNumber();
+           // calc.ResultEasyNumber();
             calc.Res();
+            calc.Sqrt();
             calc.NumeralInNumber();
+            calc.Sort();
+            calc.SumSqrtNumbers();
+            calc.CountOfZero();
+            calc.number6();
           //  calc.GetCountNumberDevTwo();
 
             Console.ReadLine();

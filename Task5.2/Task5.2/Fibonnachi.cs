@@ -16,7 +16,7 @@ namespace Task5._2
             int k = 0;
             for (BigInteger i = 1; ; i += j)
             {
-                if (k == 20)
+                if (k == 30)
                 {
                     break;
                 }

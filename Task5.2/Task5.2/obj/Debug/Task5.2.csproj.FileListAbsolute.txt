@@ -4,3 +4,9 @@ c:\users\настя\documents\visual studio 2015\Projects\Task5.2\Task5.2\bin\De
 c:\users\настя\documents\visual studio 2015\Projects\Task5.2\Task5.2\obj\Debug\Task5.2.csprojResolveAssemblyReference.cache
 c:\users\настя\documents\visual studio 2015\Projects\Task5.2\Task5.2\obj\Debug\Task5.2.exe
 c:\users\настя\documents\visual studio 2015\Projects\Task5.2\Task5.2\obj\Debug\Task5.2.pdb
+C:\Linq\Task5.2\Task5.2\bin\Debug\Task5.2.exe.config
+C:\Linq\Task5.2\Task5.2\obj\Debug\Task5.2.exe
+C:\Linq\Task5.2\Task5.2\obj\Debug\Task5.2.pdb
+C:\Linq\Task5.2\Task5.2\bin\Debug\Task5.2.exe
+C:\Linq\Task5.2\Task5.2\bin\Debug\Task5.2.pdb
+C:\Linq\Task5.2\Task5.2\obj\Debug\Task5.2.csprojResolveAssemblyReference.cache
