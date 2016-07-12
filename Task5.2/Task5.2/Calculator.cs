@@ -102,24 +102,22 @@ namespace Task5._2
 
         public void number6()
         {
-            var a = fibNumber.Where(i =>( i % 3 == 0));
+           var result1 = fibNumber.Where(i => i % 3 == 0).ToList();
 
+            var result2 = result1.Where((num, index) =>
+            fibNumber.GetRange(index <= 5 ? 0 : index - 5, index + 5 <= fibNumber.Count ? index + 5 : fibNumber.Count)
+            .Where(i => i % 5 == 0).ToList().Count > 0).ToList();
 
-            foreach (int i in fibNumber)
+                            
+            var result7 = result2.Select(i => DigitsInNumber(i).Count < 2 ? i.ToString() : i.ToString().Substring(i.ToString().Length - 2, 2));
+           
+
+            foreach (var obj in result7)
             {
-                if (i % 3 == 0)
-                {
-                    Console.WriteLine("del na 3 " +i);
-                    for(int n=0;n>i+5;n++)
-                    {
-                        Console.WriteLine("n"+n);
-                        if (n % 5 == 0)
-                        {
-                            Console.WriteLine("i"+ i);
-                        }
-                    }
-                }
+                Console.WriteLine("number:"+ obj);
+               
             }
+          
         }
 
 
