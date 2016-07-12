@@ -61,7 +61,7 @@ namespace Task5._3 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to d:\Customers.xml.
+        ///   Looks up a localized string similar to f:\Customers.xml.
         /// </summary>
         internal static string filePath {
             get {

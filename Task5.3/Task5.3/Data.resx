@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="filePath" xml:space="preserve">
-    <value>d:\Customers.xml</value>
+    <value>f:\Customers.xml</value>
   </data>
   <data name="x" xml:space="preserve">
     <value>15000</value>

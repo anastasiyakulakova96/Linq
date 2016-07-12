@@ -18,8 +18,8 @@ namespace Task5._3
             //   xml.Task2();
             //   xml.Task3(x);
             //  xml.Task4();
-            xml.Task5();
-
+            //    xml.Task5();
+            xml.Task6();
 
 
             Console.ReadLine();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -104,6 +105,34 @@ namespace Task5._3
             //    Console.WriteLine(s);
             //}
 
+        }
+
+
+        public const string POSTALCODE = "postalcode";
+        public const string COUNTRY = "country";
+        public const string PHONE = "phone";
+
+        public  void Task6()
+        {
+            
+            Regex onlyLetters = new Regex(@"(?i)^[a-z]+");
+            Regex regex = new Regex(@"\([0-9]\)");
+            Regex scopes = new Regex(@"^\(\d+\)");
+
+            var result = customers.Where(i => (i.Element(POSTALCODE) != null)
+            && (onlyLetters.IsMatch(i.Element(POSTALCODE).Value)
+            || i.Element(COUNTRY).IsEmpty
+            || !scopes.IsMatch(i.Element(PHONE).Value))).ToList();
+
+            foreach (XElement element in result)
+            {
+                Console.WriteLine("\n customer: ");
+                Console.WriteLine(element.Element(POSTALCODE).Value);
+                Console.WriteLine(element.Element(COUNTRY).Value);
+                Console.WriteLine(element.Element(PHONE).Value);
+            }
+
+            Console.ReadKey();
         }
 
 
