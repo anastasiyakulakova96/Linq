@@ -11,121 +11,146 @@ namespace Task5._2
 {
     class Calculator
     {
-        Fibonnachi fib = new Fibonnachi();
-        List<BigInteger> fibNumber;
-      //  List<int> numbers;
+        Fibonnachi fibonnachi = new Fibonnachi();
+        List<BigInteger> numbers;
+
         public Calculator()
         {
-            fibNumber = fib.CalculationFibonnachiNumbers();
-            Console.WriteLine("Count of fib numbers =" + fibNumber.Count);
+            numbers = fibonnachi.CalculationFibonnachiNumbers();
         }
 
-        public void Res()
+        public int CalculateCountOfEasyNumber()
         {
-           
-            IEnumerable<BigInteger> res = fibNumber.Where(i=> i.IsEasyNumber()).ToList();
-            Console.WriteLine("Count of easy numbers =" + res.Count());
-
-            var newDel5 = fibNumber.Where(i => (i % 5 == 0)).ToList().Count;
-            Console.WriteLine("Count of numbers that devision on five ="+ newDel5);
-
-
-         //   var a = fibNumber.Select(i => (DigitsInNumber(i).Where(q=>q==2).Count()!=0));
-
-            //    var b = a.Where(i =>(i.Where(q=>q.Equals(2))));
-          //  var b = a.Where(i => (i == 2));
-            //  var b= from x in fibNumber(from i in (DigitsInNumber(i)))
-            Console.WriteLine("");
-
+            return numbers.Where(i => i.IsEasyNumber()).Count();
         }
 
-
-        public void NumeralInNumber()
+        public void ShowCountOfEasyNumbers()
         {
-            var numberThatDivisionOnSumNumeral = fibNumber.Where(i => (i % (DigitsInNumber(i).Sum()) == 0)).Count();
-
-            Console.WriteLine("Count of numbers that devision on sum numeral =" + numberThatDivisionOnSumNumeral);
+            var countOfeasyNumber = CalculateCountOfEasyNumber();
+            Console.WriteLine($"Count of easy numbers = {countOfeasyNumber}\n");
         }
 
+        public int CalculateCountOfNumbersThatAreDivisibleByTheSumOwnNumeral()
+        {
+            return numbers.Where(i => (i % (DigitsInNumber(i).Sum()) == 0)).Count();
+        }
+
+        public void ShowCountOfNumbersThatAreDivisibleByTheSumOwnNumeral()
+        {
+            var countOfNumberThatDivisionOnSumNumeral = CalculateCountOfNumbersThatAreDivisibleByTheSumOwnNumeral();
+            Console.WriteLine($"Count of numbers that devision on sum own numeral = {countOfNumberThatDivisionOnSumNumeral} \n");
+        }
+
+        public int CalculateCountOfNumbersThatDevisionOnFive()
+        {
+            return numbers.Where(i => (i % 5 == 0)).Count();
+        }
+
+        public void ShowCountOfNumbersThatDevisionOnFive()
+        {
+            var countOfNumbersThatDevisionOnFive = CalculateCountOfNumbersThatDevisionOnFive();
+            Console.WriteLine($"Count of numbers that devision on five = {countOfNumbersThatDevisionOnFive}\n");
+        }
 
         public List<BigInteger> SearchNumberTwo()
         {
-          return fibNumber.Where(bi => bi.ToString().IndexOfAny(new char[] { '2' }) != -1).ToList();
+            return numbers.Where(bi => bi.ToString().IndexOfAny(new char[] { '2' }) != -1).ToList();
         }
 
-
-          public void Sqrt()
+        public List<double> CalculateRootOfNumbersThatContainsTwo()
         {
-            string result = "";
-            var a = SearchNumberTwo().Select(i => Math.Sqrt((double)i)).ToList();
-
-            foreach (BigInteger i in a)
-            {
-                result += i+" ";
-            }
-            Console.WriteLine("Sqrt number that contains two =" + result);
-            
+            return SearchNumberTwo().Select(i => Math.Sqrt((double)i)).ToList();
         }
 
-        public void Sort()
+        public void ShowRootsOfNumberThatContainsTwo()
         {
             string result = "";
-          
-            var  sotrList = fibNumber.Where(i=>DigitsInNumber(i).Count>1).OrderByDescending(i=>DigitsInNumber(i).ElementAt(1));
-     
-            foreach (BigInteger i in sotrList)
+            var listRoot = CalculateRootOfNumbersThatContainsTwo();
+            foreach (BigInteger i in listRoot)
             {
                 result += i + " ";
             }
-            Console.WriteLine("Sotr numbers  ="+ result);
+            Console.WriteLine($"Roots of number that contains two: \n{result}\n");
         }
 
-
-        public void SumSqrtNumbers()
+        public IOrderedEnumerable<BigInteger> SortByDecreasingNumberOfSecondNumber()
         {
-
-           var sqrtNumber = fibNumber.Select(i => DigitsInNumber(i).Select(x=>(x*x))).ToList();
-            var sum = sqrtNumber.Select(i => i.Sum());
-            var max = sum.Max();
-            Console.WriteLine("max ="+max);
+            return numbers.Where(i => DigitsInNumber(i).Count > 1).OrderByDescending(i => DigitsInNumber(i).ElementAt(1));
         }
 
-
-        public void CountOfZero()
+        public void ShowSortedByDecreasingNumberOfSecondNumber()
         {
-         var averageZero = fibNumber.Select(i => DigitsInNumber(i).Where(q=> q == 0).Count()).Average();
+            string result = "";
+            var sortedList = SortByDecreasingNumberOfSecondNumber();
 
-            Console.WriteLine("avg count ziro =" + averageZero.ToString("0.00"));
+            foreach (BigInteger i in sortedList)
+            {
+                result += i + " ";
+            }
+            Console.WriteLine($"Sorted by descending number of second number: \n {result}\n");
         }
 
-
-
-        public void number6()
+        public IEnumerable<string> CalculationOfTwoDigitNumberThatDivisibleByThreeAndNearHaveNumberThatDivisibleByFive()
         {
-           var result1 = fibNumber.Where(i => i % 3 == 0).ToList();
+            var listOfNumbersThatDivisionByThree = numbers.Where(i => i % 3 == 0).ToList();
 
-            var result2 = result1.Where((num, index) =>
-            fibNumber.GetRange(index <= 5 ? 0 : index - 5, index + 5 <= fibNumber.Count ? index + 5 : fibNumber.Count)
+            var listOfNumbersThatDivisionByThreeAndNearHaveNumberThatDivisionByFive = listOfNumbersThatDivisionByThree.Where((num, index) =>
+            numbers.GetRange(index <= 5 ? 0 : index - 5, index + 5 <= numbers.Count ? index + 5 : numbers.Count)
             .Where(i => i % 5 == 0).ToList().Count > 0).ToList();
 
-                            
-            var result7 = result2.Select(i => DigitsInNumber(i).Count < 2 ? i.ToString() : i.ToString().Substring(i.ToString().Length - 2, 2));
-           
-
-            foreach (var obj in result7)
-            {
-                Console.WriteLine("number:"+ obj);
-               
-            }
-          
+            return listOfNumbersThatDivisionByThreeAndNearHaveNumberThatDivisionByFive.Select(i => DigitsInNumber(i).Count < 2 ? i.ToString() : i.ToString().Substring(i.ToString().Length - 2, 2));
         }
 
+        public void ShowDigitNumberThatDivisibleByThreeAndNearHaveNumberThatDivisibleByFive()
+        {
+            string result = "";
+            var listOfTwoDigitNumber = CalculationOfTwoDigitNumberThatDivisibleByThreeAndNearHaveNumberThatDivisibleByFive();
 
+            foreach (var i in listOfTwoDigitNumber)
+            {
+                result += i + " ";
+            }
+            Console.WriteLine($"Digit-number that divisible by three and near have number that divisible by five:\n {result} \n");
+        }
+
+        public BigInteger[] CalculateMaxSumOfTheSquaresOfNumbers()
+        {
+            var squaresOfNumbers = numbers.Select(i => DigitsInNumber(i).Select(x => (x * x))).ToList();
+            var sumOfTheSquaresOfNumbers = squaresOfNumbers.Select(i => i.Sum());
+            var maxSumAndHerNomber = numbers.Select(i => new
+            {
+                Number = i,
+                Sum = DigitsInNumber(i)
+                .Select(x => (x * x)).Sum()
+            })
+                .Where(i => i.Sum == sumOfTheSquaresOfNumbers.Max()).ToList();
+
+            return new BigInteger[] { maxSumAndHerNomber[0].Number, maxSumAndHerNomber[0].Sum };
+
+        }
+
+        public void ShowMaxSumOfTheSquaresOfNumbers()
+        {
+            var result = CalculateMaxSumOfTheSquaresOfNumbers();
+
+            Console.WriteLine($"Number that have max sum of squres in numbers: {result[0]}. Him sum of squres in this number: {result[1]}\n");
+        }
+
+        public double CalculateAvgerageCountOfZeroInNumbers()
+        {
+            return numbers.Select(i => DigitsInNumber(i).Where(q => q == 0).Count()).Average();
+        }
+
+        public void ShowAvgerageCountOfZeroInNumbers()
+        {
+            var averageZero = CalculateAvgerageCountOfZeroInNumbers();
+            Console.WriteLine($"Average count zero in numbers: {averageZero.ToString("0.00")}");
+        }
 
         public List<int> DigitsInNumber(BigInteger number)
         {
             return number.ToString().ToCharArray().Select(item => (int)Char.GetNumericValue(item)).ToList();
         }
 
-       }
+    }
 }

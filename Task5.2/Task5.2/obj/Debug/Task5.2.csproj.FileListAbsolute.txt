@@ -10,3 +10,6 @@ C:\Linq\Task5.2\Task5.2\obj\Debug\Task5.2.pdb
 C:\Linq\Task5.2\Task5.2\bin\Debug\Task5.2.exe
 C:\Linq\Task5.2\Task5.2\bin\Debug\Task5.2.pdb
 C:\Linq\Task5.2\Task5.2\obj\Debug\Task5.2.csprojResolveAssemblyReference.cache
+C:\Linq\Task5.2\Task5.2\obj\Debug\Task5._2.Data.resources
+C:\Linq\Task5.2\Task5.2\obj\Debug\Task5.2.csproj.GenerateResource.Cache
+C:\Linq\Task5.2\Task5.2\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll

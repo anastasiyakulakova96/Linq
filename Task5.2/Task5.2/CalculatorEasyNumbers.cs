@@ -10,36 +10,7 @@ namespace Task5._2
 {
     public static class CalculatorEasyNumbers
     {
-        //public static bool CheckNumber(BigInteger current)
-        //{
-        //    bool result = true;
-        //    if (current > 2) return result;
-        //    for (int i = 2; i < current; i++)
-        //    {
-        //        if (current % i == 0)
-        //        {
-        //            result = false;
-        //            break;
-        //        }
-        //    }
-        //    return result;
-        //}
-
-
-        public static bool EasyNumber(BigInteger n)
-        {
-            if (n == 1)
-                return false;
-            for (int d = 2; d * d <= n; d++)
-            {
-                if (n % d == 0)
-                    return false;
-            }
-            return true;
-        }
-
-
-        public static bool q(BigInteger source)
+        public static bool EasyNumber(BigInteger source)
         {
             int certainty = 10;
             if (source == 2 || source == 3)
@@ -64,7 +35,6 @@ namespace Task5._2
             {
                 do
                 {
-
                     rng.GetBytes(bytes);
                     a = new BigInteger(bytes);
                 }
@@ -92,23 +62,8 @@ namespace Task5._2
 
         public static bool IsEasyNumber(this BigInteger number)
         {
-            return q(number);
+            return EasyNumber(number);
         }
     }
-
-        
-
-        //public static int GetCountNumeralInNumber(this BigInteger number)
-        //{
-        //    int count = 0;
-        //    while (number != 0)
-        //    {
-        //        number /= 10;
-        //        count++;
-        //    }
-        //    return count;
-        //}
-
-
-    }
+}
 

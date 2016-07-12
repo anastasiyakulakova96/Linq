@@ -9,14 +9,17 @@ namespace Task5._2
 {
     class Fibonnachi
     {
+        int countOfFibonnachiNumbers = Int32.Parse(Data.countOfFibonnachiNumbers);
+
         public List<BigInteger> CalculationFibonnachiNumbers()
         {
             List<BigInteger> listFibonnachiNumbers = new List<BigInteger>();
             BigInteger j = 1;
             int k = 0;
+            Console.WriteLine($"{countOfFibonnachiNumbers} numbers of Fibonnachi:");
             for (BigInteger i = 1; ; i += j)
             {
-                if (k == 20)
+                if (k == countOfFibonnachiNumbers)
                 {
                     break;
                 }

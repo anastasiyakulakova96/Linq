@@ -9,26 +9,21 @@ namespace Task5._2
 {
     class Launcher
     {
-       
-
-      
-
         static void Main(string[] args)
         {
             Launcher launcher = new Launcher();
             Calculator calc = new Calculator();
-           // calc.ResultEasyNumber();
-            calc.Res();
-            calc.Sqrt();
-            calc.NumeralInNumber();
-            calc.Sort();
-            calc.SumSqrtNumbers();
-            calc.CountOfZero();
-            calc.number6();
-          //  calc.GetCountNumberDevTwo();
+
+            calc.ShowCountOfEasyNumbers();
+            calc.ShowCountOfNumbersThatAreDivisibleByTheSumOwnNumeral();
+            calc.ShowCountOfNumbersThatDevisionOnFive();
+            calc.ShowRootsOfNumberThatContainsTwo();
+            calc.ShowSortedByDecreasingNumberOfSecondNumber();
+            calc.ShowDigitNumberThatDivisibleByThreeAndNearHaveNumberThatDivisibleByFive();
+            calc.ShowMaxSumOfTheSquaresOfNumbers();
+            calc.ShowAvgerageCountOfZeroInNumbers();
 
             Console.ReadLine();
         }
-
     }
 }
