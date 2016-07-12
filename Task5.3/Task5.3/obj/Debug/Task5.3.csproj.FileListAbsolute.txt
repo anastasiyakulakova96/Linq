@@ -1,0 +1,8 @@
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\bin\Debug\Task5.3.exe.config
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\bin\Debug\Task5.3.exe
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\bin\Debug\Task5.3.pdb
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\obj\Debug\Task5.3.csprojResolveAssemblyReference.cache
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\obj\Debug\Task5._3.Data.resources
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\obj\Debug\Task5.3.csproj.GenerateResource.Cache
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\obj\Debug\Task5.3.exe
+c:\users\anastasiya_kulakova\documents\visual studio 2015\Projects\Task5.3\Task5.3\obj\Debug\Task5.3.pdb
