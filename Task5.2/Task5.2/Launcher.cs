@@ -11,7 +11,7 @@ namespace Task5._2
     {
         static void Main(string[] args)
         {
-            Launcher launcher = new Launcher();
+           // Launcher launcher = new Launcher();
             Calculator calc = new Calculator();
 
             calc.ShowCountOfEasyNumbers();

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Task5._3 {
+namespace TestClass {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Task5._3 {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Task5._3.Data", typeof(Data).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TestClass.Data", typeof(Data).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,15 +66,6 @@ namespace Task5._3 {
         internal static string filePath {
             get {
                 return ResourceManager.GetString("filePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 15000.
-        /// </summary>
-        internal static string x {
-            get {
-                return ResourceManager.GetString("x", resourceCulture);
             }
         }
     }

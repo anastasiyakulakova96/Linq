@@ -75,7 +75,9 @@ namespace Task5._2
 
         public IOrderedEnumerable<BigInteger> SortByDecreasingNumberOfSecondNumber()
         {
-            return numbers.Where(i => DigitsInNumber(i).Count > 1).OrderByDescending(i => DigitsInNumber(i).ElementAt(1));
+            return numbers.Where(i => DigitsInNumber(i).Count > 1)
+                .OrderByDescending(i => DigitsInNumber(i)
+                .ElementAt(1));
         }
 
         public void ShowSortedByDecreasingNumberOfSecondNumber()

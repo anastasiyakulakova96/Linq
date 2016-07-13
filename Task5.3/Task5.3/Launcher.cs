@@ -12,15 +12,18 @@ namespace Task5._3
         static void Main(string[] args)
         {
             int x = Int32.Parse(Data.x);
-            XMLWorker xml = new XMLWorker();
-            xml.ReadXml();
+        string filePath = Data.filePath;
+        XMLWorker xml = new XMLWorker();
+           xml.ReadXml(filePath);
             //  xml.ShowCostomers();
             //   xml.Task2();
             //   xml.Task3(x);
-            //  xml.Task4();
+            xml.SortFirstOrderByYearAndMonthAndTotalTurnoverAndName();
             //    xml.Task5();
-            xml.Task6();
-
+            //   xml.SerchCustomerWithoutNormalCoseOrRegionOrNormalPhone();
+            //    xml.CalculateCustomersWithIncorrectInformation();
+            //  xml.Task7();
+            // xml.Task8();
 
             Console.ReadLine();
         }

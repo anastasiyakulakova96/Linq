@@ -8,16 +8,23 @@ using System.Xml.Linq;
 
 namespace Task5._3
 {
-    class XMLWorker
+    public class XMLWorker
     {
-        public string filePath;
+        public string filePath  = Data.filePath;
         public XDocument xDoc;
-        List<XElement> customers;
+      public  List<XElement> customers { get; set; }
         int x = Int32.Parse(Data.x);
+        Regex onlyLetters = new Regex(@"(?i)^[a-z]+");
+        Regex regex = new Regex(@"\([0-9]\)");
+        Regex scopes = new Regex(@"^\(\d+\)");
+        public const string POSTALCODE = "postalcode";
+        public const string COUNTRY = "country";
+        public const string PHONE = "phone";
 
-        public void ReadXml()
+        public List<XElement> listOrders;
+
+        public void ReadXml(string filePath)
         {
-            filePath = Data.filePath;
             xDoc = XDocument.Load(filePath);
             customers = xDoc.Root.Elements().ToList();
         }
@@ -26,29 +33,29 @@ namespace Task5._3
         //(сумма всех заказов) превосходит некоторую величину X. 
         //    Продемонстрируйте выполнение запроса с различными X 
         //    (подумайте, можно ли обойтись без копирования запроса несколько раз)
-        public IEnumerable<XElement> Task1(int x)
+        public List<XElement> CalculationOfTotalTurnoverGreaterThanX(int x)
         {
             return customers.Where(c => c.Element("orders").Elements("order")
-                        .Sum(order => Double.Parse(order.Element("total").Value)) > x);
+                        .Sum(order => Double.Parse(order.Element("total").Value)) > x).ToList();
         }
 
 
-        public void ShowCostomers()
-        {
-            IEnumerable<XElement> a = Task1(x);
-            var id = a.Select(i => i.Element("id"));
+        //public void ShowCostomers()
+        //{
+        //    IEnumerable<XElement> a = Task1(x);
+        //    var id = a.Select(i => i.Element("id"));
 
-            foreach (var s in id)
-            {
-                Console.WriteLine(s);
-            }
-        }
+        //    foreach (var s in id)
+        //    {
+        //        Console.WriteLine(s);
+        //    }
+        //}
 
 
         //2.	Сгруппировать клиентов по странам.
-        public void Task2()
+        public Dictionary<string, List<XElement>> GroupCustomersByCountry()
         {
-            var a = customers.GroupBy(c => c.Element("country").Value).ToDictionary(c => c.Key, c => c.ToList());
+            return customers.GroupBy(c => c.Element("country").Value).ToDictionary(c => c.Key, c => c.ToList());
 
             //foreach (var s in a)
             //{
@@ -58,9 +65,9 @@ namespace Task5._3
         }
 
         //3.	Найдите всех клиентов, у которых были заказы, превосходящие по сумме величину X
-        public void Task3(int x)
+        public List<XElement> SearchCustomersThatHaveTotalTurnoverGreaterThanX(int x)
         {
-            var b = customers.Where(c => c.Element("orders").Elements("order").Any(order => Double.Parse(order.Element("total").Value) > x));
+            return customers.Where(c => c.Element("orders").Elements("order").Any(order => Double.Parse(order.Element("total").Value) > x)).ToList();
 
             //foreach (var s in b)
             //{
@@ -72,32 +79,33 @@ namespace Task5._3
         //4.	Выдайте список клиентов с указанием,
         //начиная с какого месяца какого года они стали клиентами (принять за таковые месяц и год самого первого заказа)
         //
-        public void Task4()
+        public List<string> CalculateWhenCustomersHadFirstOrder()
         {
-            var a = customers.Select(c => c.Element("orders").Elements("order").FirstOrDefault()?.Element("orderdate").Value);
-            foreach (var s in a)
-            {
-                Console.WriteLine(s);
-            }
+            return customers.Select(c => c.Element("orders").Elements("order").FirstOrDefault()?.Element("orderdate").Value).ToList();
+            //foreach (var s in a)
+            //{
+            //    Console.WriteLine(s);
+            //}
         }
 
 
         // 5.	Сделайте предыдущее задание, но выдайте список отсортированным по году, месяцу,
         //оборотам клиента(от максимального к минимальному) и имени клиента
 
-        public void Task5()
+        public List<List<XElement>> SortFirstOrderByYearAndMonthAndTotalTurnoverAndName()
         {
-            var a = customers.Select(c => new
+            return customers.Select(c => new
             {
                 c = customers,
                 data = Convert.ToDateTime(c.Element("orders").Elements("order").FirstOrDefault()?.Element("orderdate").Value),
                 sum = c.Element("orders").Elements("order").Sum(order => Double.Parse(order.Element("total").Value)),
                 name = c.Element("name").Value
             })
-                .OrderBy(d => d.data.Year).
-                 ThenBy(d => d.data.Month).
-                   ThenByDescending(s => s.sum).
-                    ThenBy(n => n.name);
+                   .OrderBy(d => d.data.Year).
+                    ThenBy(d => d.data.Month).
+                      ThenByDescending(s => s.sum).
+                       ThenBy(n => n.name).
+                       Select(x => x.c).ToList();
 
 
             //foreach (var s in a)
@@ -106,38 +114,77 @@ namespace Task5._3
             //}
 
         }
-
-
-        public const string POSTALCODE = "postalcode";
-        public const string COUNTRY = "country";
-        public const string PHONE = "phone";
-
-        public  void Task6()
+        //6.	Укажите всех клиентов, у которых указан нецифровой код или не заполнен регион или в телефоне не указан код оператора 
+        //(для простоты считаем, что это равнозначно «нет круглых скобочек в начале»).
+        //public List<XElement> SerchCustomerWithoutNormalCoseOrRegionOrNormalPhone()
+        //{
+        public List<XElement> CalculateCustomersWithIncorrectInformation()
         {
-            
-            Regex onlyLetters = new Regex(@"(?i)^[a-z]+");
-            Regex regex = new Regex(@"\([0-9]\)");
-            Regex scopes = new Regex(@"^\(\d+\)");
+            int s;
+      var a= customers.Where(c => Int32.TryParse(c.Element("postalcode")?.Value.ToString(), out s) == false || c.Element("region")?.Value == null || c.Element("phone")?.Value.Contains("(") == false).ToList();
 
-            var result = customers.Where(i => (i.Element(POSTALCODE) != null)
-            && (onlyLetters.IsMatch(i.Element(POSTALCODE).Value)
-            || i.Element(COUNTRY).IsEmpty
-            || !scopes.IsMatch(i.Element(PHONE).Value))).ToList();
-
-            foreach (XElement element in result)
+            foreach (var it in a)
             {
-                Console.WriteLine("\n customer: ");
-                Console.WriteLine(element.Element(POSTALCODE).Value);
-                Console.WriteLine(element.Element(COUNTRY).Value);
-                Console.WriteLine(element.Element(PHONE).Value);
-            }
+                Console.WriteLine(it.Element("name").Value);
 
-            Console.ReadKey();
+            }
+            return a;
+        }
+
+        //  7.	Рассчитайте среднюю прибыльность каждого города
+        //(среднюю сумму заказа по всем клиентам из данного города) и 
+        //среднюю интенсивность(среднее количество заказов, приходящееся на клиента из каждого города)
+        public Dictionary<string, decimal> CalculateAverageCityIncome()
+        {
+            return customers.GroupBy(i => i.Element("city").Value).ToDictionary(g => g.Key,
+     g => g.Sum(i => i.Element("orders").Elements("order")
+     .Sum(order => Decimal.Parse(order.Element("total").Value))) / g.Sum(q => q.Element("orders").Elements("order").Count()));
+        }
+
+        public Dictionary<XElement, int> CalculateAverageIntensity()
+        {
+            return customers.GroupBy(i => i.Element("city")).ToDictionary(g => g.Key,
+  g => g.Sum(i => i.Element("orders").Elements("order").Count()) / g.Count());
+        }
+
+
+        //8.	Сделайте среднегодовую статистику активности клиентов по месяцам (без учета года), 
+        //статистику по годам, по годам и месяцам (т.е. когда один месяц в разные годы имеет своё значение).
+
+
+
+        public void AddAllOrders()
+        {
+            listOrders = new List<XElement>();
+
+            foreach (var item in customers)
+            {
+                listOrders.AddRange(item.Element("orders").Elements("order"));
+            }
         }
 
 
 
+        public List<IGrouping<int, XElement>> CalculationOfAverageClientActivityStatisticsByMonth()
+        {
+            AddAllOrders();
 
+            return listOrders.GroupBy(d => Convert.ToDateTime(d.Element("orderdate").Value).Month).ToList();
+        }
+
+        public List<IGrouping<int, XElement>> CalculationOfAverageClientActivityStatisticsByYear()
+        {
+            AddAllOrders();
+            return listOrders.GroupBy(d => Convert.ToDateTime(d.Element("orderdate").Value).Year).ToList();
+
+        }
+
+
+        public List<IGrouping<string, XElement>> CalculationOfAverageClientActivityStatisticsByMonthAndYear()
+        {
+            AddAllOrders();
+            return listOrders.GroupBy(d => Convert.ToDateTime(d.Element("orderdate").Value).Date.ToString("yyyy-MM")).ToList();
+        }
     }
 }
 

@@ -1,0 +1,10 @@
+C:\Linq\Task5.3\TestClass\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Linq\Task5.3\TestClass\obj\Debug\TestClass.Data.resources
+C:\Linq\Task5.3\TestClass\obj\Debug\Test.csproj.GenerateResource.Cache
+C:\Linq\Task5.3\TestClass\bin\Debug\TestClass.dll
+C:\Linq\Task5.3\TestClass\bin\Debug\TestClass.pdb
+C:\Linq\Task5.3\TestClass\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Linq\Task5.3\TestClass\bin\Debug\Task5.3.exe
+C:\Linq\Task5.3\TestClass\bin\Debug\Task5.3.pdb
+C:\Linq\Task5.3\TestClass\obj\Debug\TestClass.dll
+C:\Linq\Task5.3\TestClass\obj\Debug\TestClass.pdb
