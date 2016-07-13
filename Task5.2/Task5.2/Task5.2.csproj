@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="ConsoleWorker.cs" />
     <Compile Include="Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -56,7 +57,7 @@
     </Compile>
     <Compile Include="Fibonnachi.cs" />
     <Compile Include="Launcher.cs" />
-    <Compile Include="CalculatorEasyNumbers.cs" />
+    <Compile Include="CalculatorPrimeNumbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

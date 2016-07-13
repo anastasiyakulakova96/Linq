@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Task5._2
 {
-    public static class CalculatorEasyNumbers
+    public static class CalculatorPrimeNumbers
     {
-        public static bool EasyNumber(BigInteger source)
+        public static bool PrimeNumber(BigInteger source)
         {
             int certainty = 10;
             if (source == 2 || source == 3)
@@ -60,9 +60,9 @@ namespace Task5._2
             return true;
         }
 
-        public static bool IsEasyNumber(this BigInteger number)
+        public static bool IsPrimeNumber(this BigInteger number)
         {
-            return EasyNumber(number);
+            return PrimeNumber(number);
         }
     }
 }

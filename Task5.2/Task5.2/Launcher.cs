@@ -11,19 +11,19 @@ namespace Task5._2
     {
         static void Main(string[] args)
         {
-           // Launcher launcher = new Launcher();
-            Calculator calc = new Calculator();
+            ConsoleWorker cw = new ConsoleWorker();
 
-            calc.ShowCountOfEasyNumbers();
-            calc.ShowCountOfNumbersThatAreDivisibleByTheSumOwnNumeral();
-            calc.ShowCountOfNumbersThatDevisionOnFive();
-            calc.ShowRootsOfNumberThatContainsTwo();
-            calc.ShowSortedByDecreasingNumberOfSecondNumber();
-            calc.ShowDigitNumberThatDivisibleByThreeAndNearHaveNumberThatDivisibleByFive();
-            calc.ShowMaxSumOfTheSquaresOfNumbers();
-            calc.ShowAvgerageCountOfZeroInNumbers();
+            cw.ShowCountOfPrimeNumbers();
+            cw.ShowCountOfNumbersThatAreDivisibleByTheSumOwnNumeral();
+            cw.ShowCountOfNumbersThatDevisionOnFive();
+            cw.ShowRootsOfNumberThatContainsTwo();
+            cw.ShowSortedByDecreasingNumberOfSecondNumber();
+            cw.ShowDigitNumberThatDivisibleByThreeAndNearHaveNumberThatDivisibleByFive();
+            cw.ShowMaxSumOfTheSquaresOfNumbers();
+            cw.ShowAvgerageCountOfZeroInNumbers();
 
             Console.ReadLine();
         }
+
     }
 }
